@@ -1,0 +1,4 @@
+url: "https://example.com"
+include_kitchen_sink: true
+include_assets_zip: false
+output_format: "json"
