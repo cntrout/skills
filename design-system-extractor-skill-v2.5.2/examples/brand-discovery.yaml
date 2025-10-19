@@ -1,0 +1,7 @@
+url: "https://example.com"
+discover_brand_sites: true
+brand_discovery:
+  max_pages: 8
+include_kitchen_sink: true
+include_assets_zip: true
+output_format: "json"

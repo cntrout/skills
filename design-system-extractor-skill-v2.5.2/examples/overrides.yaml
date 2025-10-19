@@ -1,0 +1,9 @@
+url: "https://example.com"
+page_html: "<!doctype html>...PASTE FULL PAGE SOURCE..."
+css_overrides:
+  - "/* main.css */ ..."
+  - "/* components.css */ ..."
+include_kitchen_sink: true
+include_assets_zip: true
+discover_brand_sites: true
+output_format: "json"
