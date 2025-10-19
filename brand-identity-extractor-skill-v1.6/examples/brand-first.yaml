@@ -1,0 +1,8 @@
+url: "https://example.com"
+discover_brand_sites: true
+brand_discovery:
+  candidate_subdomains: ["brand","press","media","style"]
+  candidate_paths: ["/brand","/press-kit","/media-kit","/brand-guidelines"]
+include_voicebook: true
+include_assets_zip: true
+output_format: "json"

@@ -1,0 +1,8 @@
+url: "https://example.com"
+page_html: "<!doctype html>...PASTE FULL PAGE SOURCE..."
+css_overrides:
+  - "/* main.css */ ..."
+  - "/* components.css */ ..."
+include_voicebook: true
+include_assets_zip: true
+output_format: "json"
