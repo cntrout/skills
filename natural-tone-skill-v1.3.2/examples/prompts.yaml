@@ -1,0 +1,53 @@
+# Copy one block into the Inputs panel, then paste your draft in chat.
+
+general_web_copy:
+  formality: "neutral"
+  directness: "balanced"
+  reading_level: "10th"
+  variance_level: "medium"
+  burstiness: { avg_len_target: 22, stdev_min: 6, min_short: 8, min_long: 32 }
+  use_questions: true
+  question_rate: 1
+  opener_diversity_min: 0.6
+  paragraph_len_stdev_min: 1.0
+  idiom_level: "light"
+  allow_first_person: true
+
+blog_editorial:
+  formality: "neutral"
+  directness: "balanced"
+  reading_level: "12th"
+  variance_level: "high"
+  burstiness: { avg_len_target: 25, stdev_min: 7, min_short: 8, min_long: 36 }
+  use_questions: true
+  question_rate: 2
+  opener_diversity_min: 0.7
+  paragraph_len_stdev_min: 1.4
+  idiom_level: "light"
+  allow_first_person: true
+
+product_specs_prd:
+  formality: "formal"
+  directness: "balanced"
+  reading_level: "12th"
+  variance_level: "low"
+  burstiness: { avg_len_target: 20, stdev_min: 5, min_short: 8, min_long: 30 }
+  use_questions: false
+  question_rate: 0
+  opener_diversity_min: 0.5
+  paragraph_len_stdev_min: 0.8
+  idiom_level: "none"
+  allow_first_person: false
+
+marketing_ad_copy:
+  formality: "neutral"
+  directness: "blunt"
+  reading_level: "10th"
+  variance_level: "medium"
+  burstiness: { avg_len_target: 21, stdev_min: 7, min_short: 6, min_long: 28 }
+  use_questions: true
+  question_rate: 2
+  opener_diversity_min: 0.65
+  paragraph_len_stdev_min: 1.2
+  idiom_level: "light"
+  allow_first_person: true
