@@ -1,9 +1,11 @@
 target_person:
   name: "Jane Smith"
   title: "Head of Product"
+  profile_url: "https://www.linkedin.com/in/jane-smith/"
 company:
   name: "Acme Corp"
 role:
   title: "Senior Product Manager"
-variations_per_type: 3
+profile_source_mode: "auto"
+variations_per_type: 4
 output_markdown_artifact: true
