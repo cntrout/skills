@@ -2,7 +2,7 @@
 name: "job-research"
 description: "Deep-dive job application research: parse a job post, map the company, and identify the most relevant public points of contact for outreach—ethically and reproducibly."
 ---
-# Job Application Research (v1.3)
+# Job Application Research (v1.4)
 
 _Last updated: 2025-10-20Z_
 
@@ -10,7 +10,8 @@ _Last updated: 2025-10-20Z_
 Given a job posting URL (or pasted posting content), produce a **structured research report** that:
 1) understands the **role** and **requirements**,  
 2) maps the **company** (mission, products, culture, recent news), and  
-3) identifies **public** points of contact most relevant to the posting, with rationale and ranked outreach order.
+3) identifies **public** points of contact most relevant to the posting, with rationale and ranked outreach order,  
+4) **captures the original job posting** as an artifact (URL, platform, posted date, and full body when available).
 
 > This skill uses only **publicly available** sources. It respects robots.txt, avoids login-gated pages, and will not guess private emails.
 
@@ -84,10 +85,12 @@ properties:
       outreach_plan: true
       contacts_csv: true
       company_snapshot: true
+      original_job_posting: true
     properties:
       outreach_plan: { type: boolean }
       contacts_csv: { type: boolean }
       company_snapshot: { type: boolean }
+      original_job_posting: { type: boolean }
 ```
 
 ---
@@ -203,10 +206,26 @@ properties:
           bytes_b64: { type: string }
       company_snapshot:
         type: object
+        required: ["filename","markdown","sources"]
+        properties:
+          filename: { type: string }
+          markdown: { type: string, description: "Include inline reference links for each section." }
+          sources:
+            type: object
+            additionalProperties: false
+            properties:
+              mission_values: { type: array, items: { type: string }, default: [] }
+              products: { type: array, items: { type: string }, default: [] }
+              culture_signals: { type: array, items: { type: string }, default: [] }
+              recent_news: { type: array, items: { type: string }, default: [] }
+              key_pages: { type: array, items: { type: string }, default: [] }
+              public_profiles: { type: array, items: { type: string }, default: [] }
+      original_job_posting:
+        type: object
         required: ["filename","markdown"]
         properties:
           filename: { type: string }
-          markdown: { type: string }
+          markdown: { type: string, description: "Start with URL, Platform, Posted Date; then include full job body if available. Leave blank fields if unknown." }
   generated_at:
     type: string
     format: date-time
@@ -259,12 +278,17 @@ properties:
 1) **Ingest Job Posting**
    - If `job_posting_html` provided, parse it first. Otherwise `web_fetch(job_posting_url)`.
    - Extract: title, department/team, location, requirements, any “reports to” hints, application process details, links.
+   - Capture **Original Job Posting** artifact with:
+     - URL (from `job_posting_url` or discovered canonical URL)
+     - Platform (e.g., company site, Greenhouse, Lever, Workday, LinkedIn Jobs). Leave blank if unknown.
+     - Posted date (from page metadata or visible text). Leave blank if unknown.
+     - Full body text (verbatim where accessible; otherwise leave blank and log the reason in `limits`).
 
 2) **Establish Company Identity**
    - From posting, derive likely official company name.
    - Find the **official website** (verify name/logo/industry match).
    - Build key page list: About, Leadership/Team, Careers, Culture/Life at, Products/Solutions, Newsroom/Press, Investor, Blog.
-   - For each page found, `web_fetch` and extract concise bullets (mission/values, product capsules, culture signals, recent announcements).
+   - For each page found, `web_fetch` and extract concise bullets (mission/values, product capsules, culture signals, recent announcements). **Embed source links inline in the `company_snapshot` Markdown and populate `company_snapshot.sources` for each section.**
 
 3) **Public Profiles**
    - Locate LinkedIn company page URL and Crunchbase company page URL if discoverable without login.
@@ -286,33 +310,7 @@ properties:
    - Add `attempts_log` entries for fetches, and `limits` entries for any blocked/missing areas.
 
 7) **Artifacts (if enabled)**
-   - `outreach_plan`: Markdown with a 1–3 contact sequence, personalization hooks per person (based on their public work), and two short outreach examples (email + LinkedIn note).
+   - `outreach_plan`: Markdown with a 1–3 contact sequence, personalization hooks per person, and two short outreach examples (email + LinkedIn note).
    - `contacts_csv`: name, title, relation, URLs, priority, notes.
-   - `company_snapshot`: one-pager Markdown tailored to the role (mission, product bullets, culture signals, and 3 talking points to weave into cover letter/interview).
-
----
-
-## Examples
-
-### Basic (let the skill crawl public pages)
-```yaml
-job_posting_url: "https://jobs.example.com/openings/senior-product-manager-1234"
-include_artifacts:
-  outreach_plan: true
-  contacts_csv: true
-  company_snapshot: true
-```
-
-### Blocked board (paste the HTML)
-```yaml
-job_posting_url: "https://jobs.example.com/openings/senior-product-manager-1234"
-job_posting_html: "<!doctype html>...PASTE FULL JOB HTML..."
-```
-
-### Disambiguation hints
-```yaml
-job_posting_url: "https://jobs.example.com/openings/principal-data-engineer-5678"
-role_hint: "Principal Data Engineer — Platform"
-company_hint: "Acme Robotics"
-location_hint: "Austin, TX"
-```
+   - `company_snapshot`: one-pager Markdown with **inline source links in each section** and the `sources` map populated.
+   - `original_job_posting`: Markdown with **URL**, **Platform**, **Posted Date**, and the **full posting body** if accessible; blank fields if unknown.
