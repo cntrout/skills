@@ -1,0 +1,15 @@
+target_person:
+  name: "Jane Smith"
+  title: "Head of Product"
+company:
+  name: "Acme Corp"
+role:
+  title: "Senior Product Manager"
+profile_source_mode: "user_supplied_only"
+user_profile_markdown: |
+  # Your Name
+  Headline: Product leader
+  Experience:
+  - Contoso — Senior PM (2022–present): Shipped A; Improved B
+variations_per_type: 3
+output_markdown_artifact: true
