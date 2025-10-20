@@ -1,5 +1,12 @@
 ---
 name: "apply-to-job-posting"
+description: "Pipeline to take a job URL and pasted posting with a verified profile, run job-research, linkedin-outreach, and cover-letter, then return a consolidated package."
+metadata:
+  version: "1.0.1"
+  updated: "2025-10-20"
+---
+---
+name: "apply-to-job-posting"
 description: "One-click pipeline: job URL + pasted posting + verified profile -> run job-research, then generate LinkedIn outreach and five cover-letter variants with natural-tone; return a consolidated package."
 metadata:
   version: "1.0"
