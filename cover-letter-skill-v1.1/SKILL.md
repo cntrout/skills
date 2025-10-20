@@ -1,9 +1,10 @@
 ---
 name: "cover-letter"
-description: "Generate five distinct, copy-ready cover letters grounded in the job-research output and the candidate’s verified career file; applies the natural-tone skill to avoid AI tells."
-version: "1.1"
+description: "Generate five distinct, copy-ready cover letters grounded in job-research output and a verified career file; applies natural-tone to reduce AI tells."
+metadata:
+  version: "1.1"
+  updated: "2025-10-20"
 ---
-
 # Cover Letter — v1.1 (natural, verified, five-variant)
 
 _Last updated: 2025-10-20_
