@@ -3,3 +3,4 @@ include_artifacts:
   outreach_plan: true
   contacts_csv: true
   company_snapshot: true
+  original_job_posting: true
