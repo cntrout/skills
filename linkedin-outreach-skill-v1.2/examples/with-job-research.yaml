@@ -1,0 +1,20 @@
+target_person:
+  name: "Jane Smith"
+  title: "Head of Product"
+  profile_url: "https://www.linkedin.com/in/jane-smith/"
+company:
+  name: "Acme Corp"
+role:
+  title: "Senior Product Manager"
+job_research:
+  # Paste object from job-research output here to enrich specificity deterministically
+  site: { url: "https://acme.com" }
+  company:
+    name: "Acme Corp"
+    products: ["Acme Analytics", "Acme Cloud"]
+    culture_signals: ["Customer-first", "Remote-first"]
+  job:
+    title: "Senior Product Manager"
+    key_requirements: ["Analytics", "Roadmaps", "SQL"]
+variations_per_type: 4
+output_markdown_artifact: true

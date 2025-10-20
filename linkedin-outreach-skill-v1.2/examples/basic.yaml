@@ -1,0 +1,9 @@
+target_person:
+  name: "Jane Smith"
+  title: "Head of Product"
+company:
+  name: "Acme Corp"
+role:
+  title: "Senior Product Manager"
+variations_per_type: 3
+output_markdown_artifact: true
