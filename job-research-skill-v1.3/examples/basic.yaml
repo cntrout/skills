@@ -1,0 +1,5 @@
+job_posting_url: "https://jobs.example.com/openings/senior-product-manager-1234"
+include_artifacts:
+  outreach_plan: true
+  contacts_csv: true
+  company_snapshot: true
