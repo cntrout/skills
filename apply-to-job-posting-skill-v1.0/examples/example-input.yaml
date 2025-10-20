@@ -1,0 +1,25 @@
+job_post:
+  url: "https://example.com/jobs/123"
+  text: |
+    Senior Product Manager
+    Remote - Full-time
+    About the role...
+  platform: "LinkedIn"
+  posted_at: null
+
+candidate:
+  source_mode: "user_supplied_only"
+  user_profile_struct:
+    name: "Your Name"
+    headline: "Product leader focused on growth and experimentation"
+    positions:
+      - company: "iVisa"
+        title: "Director of Product Management"
+        dates: "2025–Present"
+        bullets:
+          - "Delivered $32M incremental revenue in one quarter via funnel optimization"
+          - "Ran 300+ experiments over three years"
+
+knobs: { brevity: 6, specificity: 8, warmth: 5, idiom_density: 2, formality: 5, jitter: 4 }
+cover_letter_length: "standard"
+artifacts: { digest_markdown: true, include_raw_json: true }
