@@ -1,0 +1,25 @@
+job_post:
+  url: "https://example.com/jobs/123"
+  text: |
+    Senior Product Manager
+    Remote - Full-time
+    About the role...
+
+career:
+  source_mode: "user_supplied_only"
+  user_profile_markdown: |
+    # Your Name
+    Headline: Product leader focused on experimentation and CRO
+    Positions:
+      - Company: iVisa
+        Title: Director of Product Management
+        Dates: 2025- Present
+        Bullets:
+          - Delivered $32M incremental revenue in one quarter via funnel optimization
+          - Ran 300+ experiments
+
+focus_team:
+  name: "Product Management"
+
+knobs: { brevity: 6, specificity: 8, warmth: 5, idiom_density: 2, formality: 5, jitter: 4 }
+artifacts: { emit_pdfs: true, emit_markdown_digest: true, include_raw_json: true }
